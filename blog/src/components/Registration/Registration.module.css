@@ -1,0 +1,86 @@
+.main {
+  margin-top: 72px;
+}
+
+.main p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 10px;
+  margin: 0 auto;
+
+  margin-bottom: 35px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 145.2%;
+  letter-spacing: 0.03em;
+  color: #254050;
+}
+
+.title a {
+  color: #75869b;
+  text-decoration: none;
+}
+
+.title .active {
+  color: #016efc;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 53px 0 59px;
+}
+
+.form label {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #254050;
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+.form label:first-of-type {
+  margin-bottom: 41px;
+}
+
+.info {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 134%;
+  letter-spacing: 0.03em;
+  color: #254050;
+}
+
+.info a {
+  font-weight: bold;
+  color: #016efc;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.background {
+  position: absolute;
+  right: 0;
+  z-index: -1;
+}

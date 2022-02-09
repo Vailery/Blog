@@ -15,17 +15,21 @@ export const PostList = () => {
 
   return (
     <div className={styles.postList}>
-      {posts.map((item) => (
-        <PostCard
-          image={item.image}
-          title={item.title}
-          text={item.text}
-          date={item.date}
-          id={0}
-          lesson_num={0}
-          author={0}
-        />
-      ))}
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          {posts.map((item) => (
+            <PostCard
+              image={item.image}
+              title={item.title}
+              text={item.text}
+              date={item.date}
+              id={0}
+              lesson_num={0}
+              author={0}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

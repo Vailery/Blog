@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 
 interface IProps {
@@ -11,7 +11,7 @@ export const NavBar = ({ closeNavBar }: IProps) => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <img
-            src="/assets/img/Vector.png"
+            src="/assets/img/close.png"
             alt="close"
             className={styles.closeButton}
             onClick={closeNavBar}
