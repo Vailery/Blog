@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { PostCard } from "../Post/PostCard";
+import { PostCard, IPostCard } from "../Post/PostCard";
 import styles from "./PostList.module.css";
 
 export const PostList = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<IPostCard[]>([]);
 
   useEffect(() => {
     fetch("https://studapi.teachmeskills.by/blog/posts/?limit=100")
@@ -16,7 +16,15 @@ export const PostList = () => {
   return (
     <div className={styles.postList}>
       {posts.map((item) => (
-        <PostCard post={item} />
+        <PostCard
+          image={item.image}
+          title={item.title}
+          text={item.text}
+          date={item.date}
+          id={0}
+          lesson_num={0}
+          author={0}
+        />
       ))}
     </div>
   );
