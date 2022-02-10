@@ -5,14 +5,20 @@ export interface IPostCard {
   image: string;
   text: string;
   date: string;
-  lesson_num: number;
   title: string;
-  author: number;
+  onClick: () => void;
 }
 
-export const PostCard = ({ image, title, text, date }: IPostCard) => {
+export const PostCard = ({
+  id,
+  image,
+  title,
+  text,
+  date,
+  onClick,
+}: IPostCard) => {
   return (
-    <div className={styles.postCard}>
+    <div key={id} className={styles.postCard} onClick={onClick}>
       <div className={styles.cardImage}>
         <img
           src={image ? image : "assets/img/defaultPostCardImage.png"}
