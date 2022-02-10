@@ -1,7 +1,7 @@
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
-import { useState, ChangeEvent } from "react";
 import styles from "./Login.module.css";
+import { NavLink } from "react-router-dom";
 
 export const Login = () => {
   const onClick = () => {};
@@ -12,26 +12,27 @@ export const Login = () => {
         <div className={styles.wrapper}>
           <p className={styles.title}>
             {" "}
-            <a href="/login" className={styles.active}>
+            <NavLink to="/login" className={styles.active}>
               Login
-            </a>{" "}
-            | <a href="/registration">Registration</a>
+            </NavLink>{" "}
+            | <NavLink to="/registration">Registration</NavLink>
           </p>
 
           <div className={styles.form}>
             <label>
-              Email <Input />
+              Email <Input type="email" />
             </label>
 
             <label>
-              Password <Input />
+              Password <Input type="password" />
             </label>
 
             <Button text="Login" onClick={onClick} />
           </div>
 
           <p className={styles.info}>
-            Forgot your password? <a href="/reset-password">Reset password</a>
+            Forgot your password?{" "}
+            <NavLink to="/reset-password">Reset password</NavLink>
           </p>
         </div>
       </div>
