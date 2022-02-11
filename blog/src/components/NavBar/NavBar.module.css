@@ -1,0 +1,48 @@
+.menu {
+  width: 100%;
+  background-color: #016efc;
+  margin-bottom: 63px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+.wrapper {
+  display: flex;
+  padding: 58px 0 71px;
+}
+
+.closeButton {
+  cursor: pointer;
+  width: 33px;
+  height: 33px;
+}
+
+.menu ul {
+  padding: 0;
+  margin: 80px 0 0 82px;
+  list-style-type: none;
+  text-align: left;
+}
+
+.menu ul li:not(:last-of-type) {
+  margin-bottom: 22px;
+}
+
+.menu a {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: white;
+  text-decoration: none;
+}
+
+a.activeLink {
+  text-decoration: underline;
+}

@@ -1,0 +1,15 @@
+.button {
+  width: 372px;
+  height: 63px;
+  background: #007bff;
+  border: 4px solid #0077f7;
+  border-radius: 200px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  cursor: pointer;
+}
