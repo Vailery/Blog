@@ -2,6 +2,7 @@ import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import styles from "./Login.module.css";
 import { NavLink } from "react-router-dom";
+import { Title } from "../Title/Title";
 
 export const Login = () => {
   const onClick = () => {};
@@ -10,23 +11,12 @@ export const Login = () => {
     <div className={styles.main}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <p className={styles.title}>
-            {" "}
-            <NavLink to="/login" className={styles.active}>
-              Login
-            </NavLink>{" "}
-            | <NavLink to="/registration">Registration</NavLink>
-          </p>
-
+          <div className={styles.title}>
+            <Title />
+          </div>
           <div className={styles.form}>
-            <label>
-              Email <Input type="email" />
-            </label>
-
-            <label>
-              Password <Input type="password" />
-            </label>
-
+            <Input type="email" label="Email" />
+            <Input type="password" label="Password" />
             <Button text="Login" onClick={onClick} />
           </div>
 

@@ -18,7 +18,7 @@ export const PostCard = ({
   onClick,
 }: IPostCard) => {
   return (
-    <div key={id} className={styles.postCard} onClick={onClick}>
+    <div className={styles.postCard} onClick={onClick}>
       <div className={styles.cardImage}>
         <img
           src={image ? image : "assets/img/defaultPostCardImage.png"}

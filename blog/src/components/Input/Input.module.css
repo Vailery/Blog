@@ -19,3 +19,19 @@
 .input:focus-visible {
   outline: none;
 }
+
+.label {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #254050;
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+.label:first-of-type {
+  margin-bottom: 41px;
+}

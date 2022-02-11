@@ -21,22 +21,7 @@
   align-items: center;
 }
 
-.title {
-  font-family: "Raleway";
-  font-style: normal;
-  font-weight: bold;
-  font-size: 45px;
-  line-height: 145.2%;
-  letter-spacing: 0.03em;
-  color: #254050;
-}
-
-.title a {
-  color: #75869b;
-  text-decoration: none;
-}
-
-.title .active {
+.title a:last-of-type {
   color: #016efc;
 }
 
@@ -44,22 +29,6 @@
   display: flex;
   flex-direction: column;
   padding: 53px 0 59px;
-}
-
-.form label {
-  font-family: "Raleway";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 29px;
-  letter-spacing: 0.05em;
-  color: #254050;
-  text-align: left;
-  margin-bottom: 60px;
-}
-
-.form label:first-of-type {
-  margin-bottom: 41px;
 }
 
 .info {

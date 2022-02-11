@@ -2,6 +2,7 @@ import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import styles from "./Registration.module.css";
 import { NavLink } from "react-router-dom";
+import { Title } from "../Title/Title";
 
 export const Registration = () => {
   const onClick = () => {};
@@ -10,31 +11,15 @@ export const Registration = () => {
     <div className={styles.main}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <p className={styles.title}>
-            {" "}
-            <NavLink to="/login">Login</NavLink> |{" "}
-            <NavLink to="/registration" className={styles.active}>
-              Registration
-            </NavLink>
-          </p>
+          <div className={styles.title}>
+            <Title />
+          </div>
 
           <div className={styles.form}>
-            <label>
-              User name <Input type="text" />
-            </label>
-
-            <label>
-              Email <Input type="email" />
-            </label>
-
-            <label>
-              Password <Input type="password" />
-            </label>
-
-            <label>
-              Confirm Password <Input type="password" />
-            </label>
-
+            <Input type="text" label="User name" />
+            <Input type="email" label="Email" />
+            <Input type="password" label="Password" />
+            <Input type="password" label="Confirm Password" />
             <Button text="Registration" onClick={onClick} />
           </div>
 
