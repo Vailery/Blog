@@ -4,6 +4,7 @@ import { PostList } from "../components/PostList/PostList";
 import { Post } from "../components/Post/Post";
 import { Login } from "../components/Login/Login";
 import { Registration } from "../components/Registration/Registration";
+import { Error } from "../components/Error/Error";
 
 export const RootRouter = () => {
   return (
@@ -19,8 +20,4 @@ export const RootRouter = () => {
       </Switch>
     </BrowserRouter>
   );
-};
-
-const Error = () => {
-  return <div>ошибка</div>;
 };
