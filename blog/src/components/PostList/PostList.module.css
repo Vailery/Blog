@@ -1,16 +1,22 @@
+.allPosts {
+  display: flex;
+  flex-direction: column;
+}
+
 .postList {
-  width: 100%;
-}
-
-.container {
-  width: 100%;
-  max-width: 1280px;
-  padding: 0 10px;
-  margin: 0 auto;
-}
-
-.wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 29px 41px;
+}
+
+.title {
+  width: 100%;
+}
+
+.loadButton {
+  margin-top: 50px;
+}
+
+.noPostsTitle {
+  margin: 30vh 0 0 30rem;
 }

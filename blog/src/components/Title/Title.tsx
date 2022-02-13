@@ -1,12 +1,9 @@
-import { NavLink } from "react-router-dom";
 import styles from "./Title.module.css";
 
-export const Title = () => {
-  return (
-    <p className={styles.title}>
-      {" "}
-      <NavLink to="/login">Login</NavLink> |{" "}
-      <NavLink to="/registration">Registration</NavLink>
-    </p>
-  );
+interface IProps {
+  text: string;
+}
+
+export const Title = ({ text }: IProps) => {
+  return <p className={styles.title}>{text}</p>;
 };

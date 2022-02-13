@@ -1,16 +1,10 @@
-.menu {
+.navBar {
   width: 100%;
   background-color: #016efc;
   margin-bottom: 63px;
 }
 
-.container {
-  width: 100%;
-  max-width: 1280px;
-  padding: 0 10px;
-  margin: 0 auto;
-}
-.wrapper {
+.menu {
   display: flex;
   padding: 58px 0 71px;
 }

@@ -1,6 +1,7 @@
-import styles from "./Header.module.css";
-import { NavBar } from "../NavBar/NavBar";
 import { useState } from "react";
+import { NavBar } from "../NavBar/NavBar";
+import { Container } from "../templates/Container/Container";
+import styles from "./Header.module.css";
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -11,8 +12,8 @@ export const Header = () => {
 
   return (
     <nav className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
+      <Container>
+        <div className={styles.menu}>
           <img
             src="/assets/img/menu.svg"
             alt="menu"
@@ -20,7 +21,7 @@ export const Header = () => {
             onClick={() => setIsActive(!isActive)}
           />
         </div>
-      </div>
+      </Container>
       {isActive ? <NavBar closeNavBar={closeNavBar} /> : null}
     </nav>
   );
