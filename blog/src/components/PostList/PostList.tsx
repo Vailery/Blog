@@ -1,19 +1,31 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { PostCard, IPostCard } from "../Post/PostCard";
 import styles from "./PostList.module.css";
+import { Button } from "../Button/Button";
+
+const LIMIT = 5;
 
 export const PostList = () => {
   const [posts, setPosts] = useState<IPostCard[]>([]);
+  const [offset, setOffset] = useState(0);
+  const [count, setCount] = useState(0);
   const history = useHistory();
 
   useEffect(() => {
-    fetch("https://studapi.teachmeskills.by/blog/posts/?limit=100")
+    fetch(
+      `https://studapi.teachmeskills.by/blog/posts/?limit=${LIMIT}&offset=${offset}`
+    )
       .then((res) => res.json())
       .then((result) => {
-        setPosts(result.results);
+        setPosts([...posts, ...result.results]);
+        setCount(result.count);
       });
-  }, []);
+  }, [offset]);
+
+  const loadMore = useCallback(() => {
+    setOffset(posts.length);
+  }, [posts]);
 
   return (
     <div className={styles.postList}>
@@ -33,6 +45,15 @@ export const PostList = () => {
             />
           ))}
         </div>
+
+        {posts.length !== count ? (
+          <Button
+            text="ещё"
+            onClick={() => {
+              loadMore();
+            }}
+          />
+        ) : null}
       </div>
     </div>
   );

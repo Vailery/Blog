@@ -14,7 +14,13 @@ export const RootRouter = () => {
         <Route path="/post/:postId" component={Post} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
+        <Route path="/success" component={PostList} />
+        <Route path="*" component={Error} />
       </Switch>
     </BrowserRouter>
   );
+};
+
+const Error = () => {
+  return <div>ошибка</div>;
 };

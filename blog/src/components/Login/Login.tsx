@@ -1,11 +1,12 @@
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import styles from "./Login.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { Title } from "../Title/Title";
 
 export const Login = () => {
   const onClick = () => {};
+  const history = useHistory();
 
   return (
     <div className={styles.main}>
@@ -17,7 +18,12 @@ export const Login = () => {
           <div className={styles.form}>
             <Input type="email" label="Email" />
             <Input type="password" label="Password" />
-            <Button text="Login" onClick={onClick} />
+            <Button
+              text="Login"
+              onClick={() => {
+                history.push("/success");
+              }}
+            />
           </div>
 
           <p className={styles.info}>

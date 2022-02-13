@@ -73,3 +73,21 @@
   line-height: 19px;
   color: #016efc;
 }
+
+.postInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.postInfo div.postCard,
+.postInfo div.cardContent {
+  height: auto;
+}
+
+.postInfo p.contentText {
+  display: block;
+  overflow: visible;
+  padding: 10px 0;
+}

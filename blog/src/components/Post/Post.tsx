@@ -1,8 +1,12 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { PostCard, IPostCard } from "./PostCard";
+import styles from "./PostCard.module.css";
 
 export const Post = () => {
+  const [post, setPost] = useState<IPostCard>();
   const params: any = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     getPostInfo();
@@ -10,10 +14,30 @@ export const Post = () => {
 
   const getPostInfo = async () => {
     const res = await fetch(
-      "https://jsonplaceholder.typicode.com/posts/" + params.postId
+      "https://studapi.teachmeskills.by/blog/posts/" + params.postId
     );
     const post = await res.json();
+    setPost(post);
   };
 
-  return <h1>Post id = {params.postId}</h1>;
+  return post ? (
+    <div className={styles.postInfo}>
+      <PostCard
+        key={post.id}
+        image={post.image}
+        title={post.title}
+        text={post.text}
+        date={post.date}
+        id={post.id}
+        onClick={() => {}}
+      />
+      <button
+        onClick={() => {
+          history.goBack();
+        }}
+      >
+        Go back
+      </button>
+    </div>
+  ) : null;
 };

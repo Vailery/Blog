@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Context } from "../../App";
+import { Button } from "../Button/Button";
 import styles from "./NavBar.module.css";
 
 interface IProps {
@@ -6,6 +9,8 @@ interface IProps {
 }
 
 export const NavBar = ({ closeNavBar }: IProps) => {
+  const { isDark, changeIsDark } = useContext(Context);
+
   return (
     <div className={styles.menu}>
       <div className={styles.container}>
@@ -18,21 +23,41 @@ export const NavBar = ({ closeNavBar }: IProps) => {
           />
           <ul>
             <li>
-              <NavLink exact to="/" activeClassName={styles.activeLink}>
+              <NavLink
+                exact
+                to="/"
+                activeClassName={styles.activeLink}
+                onClick={closeNavBar}
+              >
                 All posts
               </NavLink>
             </li>
             <li>
-              <NavLink to="/login" activeClassName={styles.activeLink}>
+              <NavLink
+                to="/login"
+                activeClassName={styles.activeLink}
+                onClick={closeNavBar}
+              >
                 Login
               </NavLink>
             </li>
             <li>
-              <NavLink to="/registration" activeClassName={styles.activeLink}>
+              <NavLink
+                to="/registration"
+                activeClassName={styles.activeLink}
+                onClick={closeNavBar}
+              >
                 Registration
               </NavLink>
             </li>
           </ul>
+
+          <Button
+            text={isDark ? "темно" : "светло"}
+            onClick={() => {
+              changeIsDark();
+            }}
+          />
         </div>
       </div>
     </div>
