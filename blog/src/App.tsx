@@ -9,16 +9,20 @@ export const Context = createContext({
   theme: {},
 });
 
-// добавить эелементы текста
-const darkTheme = {
+export const darkTheme = {
   text: "#FFFFFF",
+  grayText: "#FFFFFF",
+  timeText: "#FFFFFF",
   colorOfCard: "#016EFC",
   backgroundColor: "#0060DC",
 };
-const lightTheme = {
+
+export const lightTheme = {
   text: "#4F4F4F",
+  grayText: "#979797",
+  timeText: "#016EFC",
   colorOfCard: "#FFFFFF",
-  backgroundColor: "#FFFFFF",
+  backgroundColor: "#E5E5E5",
 };
 
 function App() {

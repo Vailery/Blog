@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Context } from "../../App";
 import { Button } from "../Button/Button";
 import { Container } from "../templates/Container/Container";
+import { DarkModeToggle } from "../DarkModeToggle/DarkModeToggle";
 import styles from "./NavBar.module.css";
 
 interface IProps {
@@ -15,49 +16,50 @@ export const NavBar = ({ closeNavBar }: IProps) => {
   return (
     <div className={styles.navBar}>
       <Container>
-        <div className={styles.menu}>
-          <img
-            src="/assets/img/close.png"
-            alt="close"
-            className={styles.closeButton}
-            onClick={closeNavBar}
-          />
+        <div className={styles.mainMenu}>
+          <div className={styles.menu}>
+            <img
+              src="/assets/img/close.png"
+              alt="close"
+              className={styles.closeButton}
+              onClick={closeNavBar}
+            />
 
-          <ul>
-            <li>
-              <NavLink
-                exact
-                to="/"
-                activeClassName={styles.activeLink}
-                onClick={closeNavBar}
-              >
-                All posts
-              </NavLink>
-            </li>
+            <ul>
+              <li>
+                <NavLink
+                  exact
+                  to="/"
+                  activeClassName={styles.activeLink}
+                  onClick={closeNavBar}
+                >
+                  All posts
+                </NavLink>
+              </li>
 
-            <li>
-              <NavLink
-                to="/login"
-                activeClassName={styles.activeLink}
-                onClick={closeNavBar}
-              >
-                Login
-              </NavLink>
-            </li>
+              <li>
+                <NavLink
+                  to="/login"
+                  activeClassName={styles.activeLink}
+                  onClick={closeNavBar}
+                >
+                  Login
+                </NavLink>
+              </li>
 
-            <li>
-              <NavLink
-                to="/registration"
-                activeClassName={styles.activeLink}
-                onClick={closeNavBar}
-              >
-                Registration
-              </NavLink>
-            </li>
-          </ul>
+              <li>
+                <NavLink
+                  to="/registration"
+                  activeClassName={styles.activeLink}
+                  onClick={closeNavBar}
+                >
+                  Registration
+                </NavLink>
+              </li>
+            </ul>
+          </div>
 
-          <Button
-            text={isDark ? "темно" : "светло"}
+          <DarkModeToggle
             onClick={() => {
               changeIsDark();
             }}

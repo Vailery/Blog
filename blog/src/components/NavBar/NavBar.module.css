@@ -4,6 +4,12 @@
   margin-bottom: 63px;
 }
 
+.mainMenu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .menu {
   display: flex;
   padding: 58px 0 71px;
