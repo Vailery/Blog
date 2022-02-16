@@ -1,13 +1,14 @@
 import { useHistory } from "react-router-dom";
 import { Title } from "../Title/Title";
 import { Button } from "../Button/Button";
-import { ContainerWithImage } from "../templates/Container/ContainerWithImage";
+import { Container } from "../templates/Container/Container";
 import styles from "./Error.module.css";
 
 export const Error = () => {
   const history = useHistory();
+
   return (
-    <ContainerWithImage>
+    <Container isImage={true}>
       <div className={styles.error}>
         <Title text="Lost in Space?" />
         <p className={styles.info}>
@@ -21,7 +22,7 @@ export const Error = () => {
         />
       </div>
 
-      <img src="/assets/img/Astronaut.png" alt="error" />
-    </ContainerWithImage>
+      <img src="/assets/img/astronaut.png" alt="error" />
+    </Container>
   );
 };

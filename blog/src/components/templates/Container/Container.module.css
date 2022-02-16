@@ -15,7 +15,7 @@
 }
 
 .background {
-  position: absolute;
-  right: 0;
+  display: block;
+  margin-left: auto;
   z-index: -1;
 }

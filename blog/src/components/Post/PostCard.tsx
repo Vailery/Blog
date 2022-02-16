@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Context, darkTheme, lightTheme } from "../../App";
+import { Context } from "../../App";
 import styles from "./PostCard.module.css";
 
 export interface IPostCard {
@@ -19,13 +19,13 @@ export const PostCard = ({
   date,
   onClick,
 }: IPostCard) => {
-  const { isDark } = useContext(Context);
+  const { theme } = useContext(Context);
 
   return (
     <div
       className={styles.postCard}
       style={{
-        background: isDark ? darkTheme.colorOfCard : lightTheme.colorOfCard,
+        background: theme.colorOfCard,
       }}
       onClick={onClick}
     >
@@ -40,7 +40,7 @@ export const PostCard = ({
         <p
           className={styles.contentTitle}
           style={{
-            color: isDark ? darkTheme.text : lightTheme.text,
+            color: theme.text,
           }}
         >
           {title}
@@ -48,7 +48,7 @@ export const PostCard = ({
         <p
           className={styles.contentText}
           style={{
-            color: isDark ? darkTheme.grayText : lightTheme.grayText,
+            color: theme.grayText,
           }}
         >
           {text}
@@ -56,7 +56,7 @@ export const PostCard = ({
         <p
           className={styles.contentDate}
           style={{
-            color: isDark ? darkTheme.timeText : lightTheme.timeText,
+            color: theme.timeText,
           }}
         >
           {date.split("-").reverse().join(".")}

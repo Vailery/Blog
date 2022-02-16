@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { PostCard, IPostCard } from "./PostCard";
 import { Title } from "../Title/Title";
 import { Container } from "../templates/Container/Container";
 import styles from "./PostCard.module.css";
+import { Context } from "../../App";
 
 export const Post = () => {
   const [post, setPost] = useState<IPostCard>();
-  const params: any = useParams();
+  const params: { postId: string } = useParams();
   const history = useHistory();
+  const { theme } = useContext(Context);
 
   useEffect(() => {
     getPostInfo();
@@ -23,7 +25,7 @@ export const Post = () => {
   };
 
   return post ? (
-    <Container>
+    <Container isImage={false}>
       <div className={styles.postInfo}>
         <Title text="Selected post" />
 
@@ -39,6 +41,9 @@ export const Post = () => {
 
         <p
           className={styles.backButton}
+          style={{
+            color: theme.timeText,
+          }}
           onClick={() => {
             history.goBack();
           }}

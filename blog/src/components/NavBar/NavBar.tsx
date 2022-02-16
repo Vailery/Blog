@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Context } from "../../App";
-import { Button } from "../Button/Button";
 import { Container } from "../templates/Container/Container";
 import { DarkModeToggle } from "../DarkModeToggle/DarkModeToggle";
 import styles from "./NavBar.module.css";
@@ -15,7 +14,7 @@ export const NavBar = ({ closeNavBar }: IProps) => {
 
   return (
     <div className={styles.navBar}>
-      <Container>
+      <Container isImage={false}>
         <div className={styles.mainMenu}>
           <div className={styles.menu}>
             <img
@@ -60,7 +59,8 @@ export const NavBar = ({ closeNavBar }: IProps) => {
           </div>
 
           <DarkModeToggle
-            onClick={() => {
+            inputChecked={isDark ? true : false}
+            onChange={() => {
               changeIsDark();
             }}
           />

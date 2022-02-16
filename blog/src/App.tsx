@@ -3,18 +3,13 @@ import logo from "./logo.svg";
 import "./App.css";
 import { RootRouter } from "./navigation/RootRouter";
 
-export const Context = createContext({
-  isDark: false,
-  changeIsDark: () => {},
-  theme: {},
-});
-
 export const darkTheme = {
   text: "#FFFFFF",
   grayText: "#FFFFFF",
   timeText: "#FFFFFF",
   colorOfCard: "#016EFC",
   backgroundColor: "#0060DC",
+  filter: "brightness(0) invert(1)",
 };
 
 export const lightTheme = {
@@ -22,8 +17,15 @@ export const lightTheme = {
   grayText: "#979797",
   timeText: "#016EFC",
   colorOfCard: "#FFFFFF",
-  backgroundColor: "#E5E5E5",
+  backgroundColor: "#F8FAFE",
+  filter: "none",
 };
+
+export const Context = createContext({
+  isDark: false,
+  changeIsDark: () => {},
+  theme: lightTheme,
+});
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -36,7 +38,14 @@ function App() {
     <Context.Provider
       value={{ isDark, changeIsDark, theme: isDark ? darkTheme : lightTheme }}
     >
-      <div className="App">
+      <div
+        className="App"
+        style={{
+          background: isDark
+            ? darkTheme.backgroundColor
+            : lightTheme.backgroundColor,
+        }}
+      >
         <RootRouter />
       </div>
     </Context.Provider>

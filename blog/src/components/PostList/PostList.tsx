@@ -32,7 +32,7 @@ export const PostList = () => {
   }, [posts]);
 
   return (
-    <Container>
+    <Container isImage={false}>
       <div className={styles.allPosts}>
         <div className={styles.title}>
           <Title text="All posts" />
