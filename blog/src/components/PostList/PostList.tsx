@@ -1,18 +1,23 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { PostCard, IPostCard } from "../Post/PostCard";
+import { PostCard } from "../Post/PostCard";
 import { Button } from "../Button/Button";
 import { Title } from "../Title/Title";
 import { Container } from "../templates/Container/Container";
 import styles from "./PostList.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { IState } from "../../redux/store";
+import { addPosts } from "../../redux/actions/postsActions";
 
 const LIMIT = 5;
 
 export const PostList = () => {
-  const [posts, setPosts] = useState<IPostCard[]>([]);
   const [offset, setOffset] = useState(0);
   const [count, setCount] = useState(0);
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const posts = useSelector((state: IState) => state.postsReducer.posts);
 
   useEffect(() => {
     fetch(
@@ -20,7 +25,7 @@ export const PostList = () => {
     )
       .then((res) => res.json())
       .then((result) => {
-        setPosts([...posts, ...result.results]);
+        dispatch(addPosts([...posts, ...result.results]));
         setCount(result.count);
       });
   }, [offset]);

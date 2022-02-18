@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 import { RootRouter } from "./navigation/RootRouter";
 import "./App.css";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 export const darkTheme = {
   text: "#FFFFFF",
@@ -34,20 +36,22 @@ function App() {
   };
 
   return (
-    <Context.Provider
-      value={{ isDark, changeIsDark, theme: isDark ? darkTheme : lightTheme }}
-    >
-      <div
-        className="App"
-        style={{
-          background: isDark
-            ? darkTheme.backgroundColor
-            : lightTheme.backgroundColor,
-        }}
+    <Provider store={store}>
+      <Context.Provider
+        value={{ isDark, changeIsDark, theme: isDark ? darkTheme : lightTheme }}
       >
-        <RootRouter />
-      </div>
-    </Context.Provider>
+        <div
+          className="App"
+          style={{
+            background: isDark
+              ? darkTheme.backgroundColor
+              : lightTheme.backgroundColor,
+          }}
+        >
+          <RootRouter />
+        </div>
+      </Context.Provider>
+    </Provider>
   );
 }
 
