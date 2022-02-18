@@ -1,10 +1,9 @@
-import { Component, useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { PostCard, IPostCard } from "../Post/PostCard";
 import { Button } from "../Button/Button";
 import { Title } from "../Title/Title";
 import { Container } from "../templates/Container/Container";
-import { Context, darkTheme, lightTheme } from "../../App";
 import styles from "./PostList.module.css";
 
 const LIMIT = 5;
@@ -14,7 +13,6 @@ export const PostList = () => {
   const [offset, setOffset] = useState(0);
   const [count, setCount] = useState(0);
   const history = useHistory();
-  const { isDark } = useContext(Context);
 
   useEffect(() => {
     fetch(

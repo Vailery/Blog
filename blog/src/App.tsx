@@ -1,7 +1,6 @@
-import React, { createContext, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { createContext, useState } from "react";
 import { RootRouter } from "./navigation/RootRouter";
+import "./App.css";
 
 export const darkTheme = {
   text: "#FFFFFF",
