@@ -1,6 +1,8 @@
-import styles from "./Header.module.css";
+import { useContext, useState } from "react";
+import { Context } from "../../App";
 import { NavBar } from "../NavBar/NavBar";
-import { useState } from "react";
+import { Container } from "../templates/Container/Container";
+import styles from "./Header.module.css";
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -9,18 +11,23 @@ export const Header = () => {
     setIsActive(false);
   };
 
+  const { theme } = useContext(Context);
+
   return (
     <nav className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
+      <Container isImage={false}>
+        <div className={styles.menu}>
           <img
             src="/assets/img/menu.svg"
             alt="menu"
             className={styles.menuButton}
             onClick={() => setIsActive(!isActive)}
+            style={{
+              filter: theme.filter,
+            }}
           />
         </div>
-      </div>
+      </Container>
       {isActive ? <NavBar closeNavBar={closeNavBar} /> : null}
     </nav>
   );

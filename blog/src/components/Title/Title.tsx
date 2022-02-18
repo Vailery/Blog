@@ -1,12 +1,22 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../App";
 import styles from "./Title.module.css";
 
-export const Title = () => {
+interface IProps {
+  text: string;
+}
+
+export const Title = ({ text }: IProps) => {
+  const { theme } = useContext(Context);
+
   return (
-    <p className={styles.title}>
-      {" "}
-      <NavLink to="/login">Login</NavLink> |{" "}
-      <NavLink to="/registration">Registration</NavLink>
+    <p
+      className={styles.title}
+      style={{
+        color: theme.timeText,
+      }}
+    >
+      {text}
     </p>
   );
 };

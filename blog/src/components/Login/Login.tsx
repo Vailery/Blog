@@ -1,19 +1,21 @@
+import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { LoginTitle } from "../LoginTitle/LoginTitle";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
+import { Container } from "../templates/Container/Container";
 import styles from "./Login.module.css";
-import { NavLink } from "react-router-dom";
-import { Title } from "../Title/Title";
 
 export const Login = () => {
   const onClick = () => {};
 
   return (
-    <div className={styles.main}>
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
+    <div className={styles.login}>
+      <Container isImage={true}>
+        <div className={styles.mainForm}>
           <div className={styles.title}>
-            <Title />
+            <LoginTitle />
           </div>
+
           <div className={styles.form}>
             <Input type="email" label="Email" />
             <Input type="password" label="Password" />
@@ -25,13 +27,7 @@ export const Login = () => {
             <NavLink to="/reset-password">Reset password</NavLink>
           </p>
         </div>
-      </div>
-
-      <img
-        className={styles.background}
-        src="/assets/img/background.png"
-        alt="background"
-      />
+      </Container>
     </div>
   );
 };

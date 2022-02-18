@@ -73,3 +73,43 @@
   line-height: 19px;
   color: #016efc;
 }
+
+.postInfo {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+
+.postInfo div.postCard {
+  height: auto;
+  width: 675px;
+  padding: 19px 38px 59px 23px;
+}
+
+.postInfo div.cardImage {
+  width: 614px;
+  height: 249px;
+}
+
+.postInfo div.cardContent {
+  margin-top: 34px;
+  height: auto;
+}
+
+.postInfo p.contentText {
+  display: block;
+  overflow: visible;
+  padding: 16px 0 21px;
+}
+
+.backButton {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #016efc;
+  text-align: left;
+  cursor: pointer;
+}

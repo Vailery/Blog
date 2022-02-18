@@ -5,8 +5,10 @@
   font-size: 45px;
   line-height: 145.2%;
   letter-spacing: 0.03em;
-  color: #016efc;
-  text-align: left;
-  margin: 0;
-  margin-bottom: 41px;
+  color: #254050;
+}
+
+.title a {
+  color: #75869b;
+  text-decoration: none;
 }

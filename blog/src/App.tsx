@@ -1,14 +1,54 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { PostList } from "./components/PostList/PostList";
 import { RootRouter } from "./navigation/RootRouter";
 
+export const darkTheme = {
+  text: "#FFFFFF",
+  grayText: "#FFFFFF",
+  timeText: "#FFFFFF",
+  colorOfCard: "#016EFC",
+  backgroundColor: "#0060DC",
+  filter: "brightness(0) invert(1)",
+};
+
+export const lightTheme = {
+  text: "#4F4F4F",
+  grayText: "#979797",
+  timeText: "#016EFC",
+  colorOfCard: "#FFFFFF",
+  backgroundColor: "#F8FAFE",
+  filter: "none",
+};
+
+export const Context = createContext({
+  isDark: false,
+  changeIsDark: () => {},
+  theme: lightTheme,
+});
+
 function App() {
+  const [isDark, setIsDark] = useState(false);
+
+  const changeIsDark = () => {
+    setIsDark((isDark) => !isDark);
+  };
+
   return (
-    <div className="App">
-      <RootRouter />
-    </div>
+    <Context.Provider
+      value={{ isDark, changeIsDark, theme: isDark ? darkTheme : lightTheme }}
+    >
+      <div
+        className="App"
+        style={{
+          background: isDark
+            ? darkTheme.backgroundColor
+            : lightTheme.backgroundColor,
+        }}
+      >
+        <RootRouter />
+      </div>
+    </Context.Provider>
   );
 }
 

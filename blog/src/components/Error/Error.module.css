@@ -1,0 +1,20 @@
+.error {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 134%;
+  letter-spacing: 0.03em;
+  color: #254050;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.error ~ img {
+  width: 80%;
+}

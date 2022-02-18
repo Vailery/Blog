@@ -2,16 +2,7 @@
   width: 100%;
 }
 
-.container {
-  width: 100%;
-  max-width: 1280px;
-  padding: 0 10px;
-  margin: 0 auto;
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
+.menu {
   padding: 60px 0;
 }
 
