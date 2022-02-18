@@ -46,7 +46,7 @@ export const PostList = () => {
             <div className={styles.postList}>
               {posts.map((item) => (
                 <PostCard
-                  key={item.id}
+                  key={item.id + Math.random().toString(16).slice(2)}
                   image={item.image}
                   title={item.title}
                   text={item.text}

@@ -8,11 +8,11 @@ export interface IPost {
   title: string;
 }
 
-export interface IPostState {
+export interface IPostsState {
   posts: IPost[];
 }
 
-const defaultState: IPostState = {
+const defaultState: IPostsState = {
   posts: [],
 };
 

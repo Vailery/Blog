@@ -1,12 +1,14 @@
 import { combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { IPostState, postsReducer } from "./reducers/postsReducer";
+import { IPostsState, postsReducer } from "./reducers/postsReducer";
+import { IPostState, postReducer } from "./reducers/postReducer";
 
 export interface IState {
-  postsReducer: IPostState;
+  postsReducer: IPostsState;
+  postReducer: IPostState;
 }
 
 export const store = createStore(
-  combineReducers({ postsReducer }),
+  combineReducers({ postsReducer, postReducer }),
   composeWithDevTools()
 );

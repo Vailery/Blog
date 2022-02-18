@@ -7,7 +7,7 @@ import { Registration } from "../components/Registration/Registration";
 import { Error } from "../components/Error/Error";
 
 export const RootRouter = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return (
     <BrowserRouter>
