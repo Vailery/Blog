@@ -7,7 +7,7 @@ import styles from "./PostCard.module.css";
 import { Context } from "../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../redux/store";
-import { clearPost, fetchPost } from "../../redux/actions/postActions";
+import { clearPost, fetchPost } from "../../redux/actions/postsActions";
 
 export const Post = () => {
   const params: { postId: string } = useParams();
@@ -15,7 +15,7 @@ export const Post = () => {
   const dispatch = useDispatch();
   const { theme } = useContext(Context);
 
-  const post = useSelector((state: IState) => state.postReducer.post);
+  const post = useSelector((state: IState) => state.postsReducer.post);
 
   useEffect(() => {
     getPostInfo();
