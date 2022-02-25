@@ -13,7 +13,7 @@ export const Container = ({ isImage, children }: IProps) => {
         <div className={styles.wrapper}>{children}</div>
       </div>
 
-      {isImage == true ? (
+      {isImage === true ? (
         <img
           className={styles.background}
           src="/assets/img/background.png"

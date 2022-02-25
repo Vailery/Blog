@@ -1,20 +1,23 @@
-import { Component, useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { PostCard, IPostCard } from "../Post/PostCard";
+import { PostCard } from "../Post/PostCard";
 import { Button } from "../Button/Button";
 import { Title } from "../Title/Title";
 import { Container } from "../templates/Container/Container";
-import { Context, darkTheme, lightTheme } from "../../App";
 import styles from "./PostList.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { IState } from "../../redux/store";
+import { addPosts } from "../../redux/actions/postsActions";
 
 const LIMIT = 5;
 
 export const PostList = () => {
-  const [posts, setPosts] = useState<IPostCard[]>([]);
   const [offset, setOffset] = useState(0);
   const [count, setCount] = useState(0);
   const history = useHistory();
-  const { isDark } = useContext(Context);
+  const dispatch = useDispatch();
+
+  const posts = useSelector((state: IState) => state.postsReducer.posts);
 
   useEffect(() => {
     fetch(
@@ -22,7 +25,7 @@ export const PostList = () => {
     )
       .then((res) => res.json())
       .then((result) => {
-        setPosts([...posts, ...result.results]);
+        dispatch(addPosts([...posts, ...result.results]));
         setCount(result.count);
       });
   }, [offset]);
@@ -43,7 +46,7 @@ export const PostList = () => {
             <div className={styles.postList}>
               {posts.map((item) => (
                 <PostCard
-                  key={item.id}
+                  key={item.id + Math.random().toString(16).slice(2)}
                   image={item.image}
                   title={item.title}
                   text={item.text}

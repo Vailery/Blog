@@ -1,16 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { PostCard, IPostCard } from "./PostCard";
+import { PostCard } from "./PostCard";
 import { Title } from "../Title/Title";
 import { Container } from "../templates/Container/Container";
 import styles from "./PostCard.module.css";
 import { Context } from "../../App";
+import { useDispatch, useSelector } from "react-redux";
+import { IState } from "../../redux/store";
+import { addPost } from "../../redux/actions/postActions";
 
 export const Post = () => {
-  const [post, setPost] = useState<IPostCard>();
   const params: { postId: string } = useParams();
   const history = useHistory();
+  const dispatch = useDispatch();
   const { theme } = useContext(Context);
+
+  const post = useSelector((state: IState) => state.postReducer.post);
 
   useEffect(() => {
     getPostInfo();
@@ -21,7 +26,7 @@ export const Post = () => {
       "https://studapi.teachmeskills.by/blog/posts/" + params.postId
     );
     const post = await res.json();
-    setPost(post);
+    dispatch(addPost(post));
   };
 
   return post ? (
