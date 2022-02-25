@@ -7,7 +7,7 @@ import styles from "./PostCard.module.css";
 import { Context } from "../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../redux/store";
-import { addPost } from "../../redux/actions/postActions";
+import { clearPost, fetchPost } from "../../redux/actions/postActions";
 
 export const Post = () => {
   const params: { postId: string } = useParams();
@@ -19,17 +19,17 @@ export const Post = () => {
 
   useEffect(() => {
     getPostInfo();
+
+    return () => {
+      dispatch(clearPost());
+    };
   }, []);
 
   const getPostInfo = async () => {
-    const res = await fetch(
-      "https://studapi.teachmeskills.by/blog/posts/" + params.postId
-    );
-    const post = await res.json();
-    dispatch(addPost(post));
+    dispatch(fetchPost(params.postId));
   };
 
-  return post ? (
+  return post.title ? (
     <Container isImage={false}>
       <div className={styles.postInfo}>
         <Title text="Selected post" />

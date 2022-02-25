@@ -1,4 +1,6 @@
 export const ACTIONS = {
   ADD_POSTS: "ADD_POSTS",
   ADD_POST: "ADD_POST",
+  ADD_OFFSET: "ADD_OFFSET",
+  CLEAR_POST: "CLEAR_POST",
 };

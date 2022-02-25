@@ -28,6 +28,10 @@ export const postReducer = (state = defaultState, action: any) => {
       return { ...state, post: action.post };
     }
 
+    case ACTIONS.CLEAR_POST: {
+      return { ...state, post: defaultState.post };
+    }
+
     default:
       return state;
   }

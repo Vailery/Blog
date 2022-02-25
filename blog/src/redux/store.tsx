@@ -1,6 +1,7 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { IPostsState, postsReducer } from "./reducers/postsReducer";
+import thunk from "redux-thunk";
 import { IPostState, postReducer } from "./reducers/postReducer";
 
 export interface IState {
@@ -10,5 +11,5 @@ export interface IState {
 
 export const store = createStore(
   combineReducers({ postsReducer, postReducer }),
-  composeWithDevTools()
+  composeWithDevTools(applyMiddleware(thunk))
 );

@@ -7,31 +7,23 @@ import { Container } from "../templates/Container/Container";
 import styles from "./PostList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../redux/store";
-import { addPosts } from "../../redux/actions/postsActions";
+import { addOffset, fetchPosts } from "../../redux/actions/postsActions";
 
 const LIMIT = 5;
 
 export const PostList = () => {
-  const [offset, setOffset] = useState(0);
-  const [count, setCount] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
 
   const posts = useSelector((state: IState) => state.postsReducer.posts);
+  const offset = useSelector((state: IState) => state.postsReducer.offset);
 
   useEffect(() => {
-    fetch(
-      `https://studapi.teachmeskills.by/blog/posts/?limit=${LIMIT}&offset=${offset}`
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        dispatch(addPosts([...posts, ...result.results]));
-        setCount(result.count);
-      });
+    dispatch(fetchPosts(LIMIT, offset));
   }, [offset]);
 
   const loadMore = useCallback(() => {
-    setOffset(posts.length);
+    dispatch(addOffset(posts.length));
   }, [posts]);
 
   return (
@@ -60,14 +52,14 @@ export const PostList = () => {
             </div>
 
             <div className={styles.loadButton}>
-              {posts.length !== count ? (
+              {offset + LIMIT > posts.length ? null : (
                 <Button
                   text="Load more"
                   onClick={() => {
                     loadMore();
                   }}
                 />
-              ) : null}
+              )}
             </div>
           </>
         ) : (
