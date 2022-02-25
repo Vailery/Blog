@@ -1,0 +1,41 @@
+:root {
+  --loader-ring-size: 240px;
+  --loader-ring-border-size: 4px;
+}
+
+.loaderRing {
+  position: relative;
+  top: 50%;
+  margin: var(--loader-ring-size) / -2 0 0 var(--loader-ring-size) / -2;
+  width: var(--loader-ring-size);
+  height: var(--loader-ring-size);
+  transform: scale(0.7);
+}
+
+.loaderRingLight {
+  width: var(--loader-ring-size);
+  height: var(--loader-ring-size);
+  border-radius: var(--loader-ring-size);
+  box-shadow: 0 var(--loader-ring-border-size) 0 #016efc inset;
+  animation: rotate-360 0.5s linear infinite;
+}
+
+.loaderRingTrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--loader-ring-size);
+  height: var(--loader-ring-size);
+  border-radius: var(--loader-ring-size);
+  box-shadow: 0 0 10px var(--loader-ring-border-size) rgba(154, 147, 140, 0.5)
+    inset;
+}
+
+@keyframes rotate-360 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

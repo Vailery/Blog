@@ -8,6 +8,7 @@ import { Context } from "../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../redux/store";
 import { clearPost, fetchPost } from "../../redux/actions/postsActions";
+import { Loader } from "../Loader/Loader";
 
 export const Post = () => {
   const params: { postId: string } = useParams();
@@ -57,5 +58,9 @@ export const Post = () => {
         </p>
       </div>
     </Container>
-  ) : null;
+  ) : (
+    <Container isImage={false}>
+      <Loader />
+    </Container>
+  );
 };
