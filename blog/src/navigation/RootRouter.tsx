@@ -5,6 +5,7 @@ import { Post } from "../components/Post/Post";
 import { Login } from "../components/Login/Login";
 import { Registration } from "../components/Registration/Registration";
 import { Error } from "../components/Error/Error";
+import { ConfirmEmail } from "../components/ConfirmEmail/ConfirmEmail";
 
 export const RootRouter = () => {
   const isLoggedIn = true;
@@ -19,6 +20,7 @@ export const RootRouter = () => {
         </Route>
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
+        <Route path="/confirm" component={ConfirmEmail} />
         <Route path="*" component={Error} />
       </Switch>
     </BrowserRouter>

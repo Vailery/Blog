@@ -17,8 +17,13 @@ export const Login = () => {
           </div>
 
           <div className={styles.form}>
-            <Input type="email" label="Email" />
-            <Input type="password" label="Password" />
+            <Input type="email" label="Email" onChange={() => {}} value={""} />
+            <Input
+              type="password"
+              label="Password"
+              onChange={() => {}}
+              value={""}
+            />
             <Button text="Login" onClick={onClick} />
           </div>
 

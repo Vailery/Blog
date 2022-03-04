@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../../App";
+import { Image } from "../Image/Image";
 import styles from "./PostCard.module.css";
 
 export interface IPostCard {
@@ -30,10 +31,13 @@ export const PostCard = ({
       onClick={onClick}
     >
       <div className={styles.cardImage}>
-        <img
-          src={image ? image : "assets/img/defaultPostCardImage.png"}
-          alt="postImage"
-        />
+        {image ? (
+          <Image
+            src={image ? image : "assets/img/defaultPostCardImage.png"}
+            alt="postImage"
+            defaultImage="assets/img/defaultPostCardImage.png"
+          />
+        ) : null}
       </div>
 
       <div className={styles.cardContent}>

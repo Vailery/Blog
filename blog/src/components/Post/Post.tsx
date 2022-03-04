@@ -19,16 +19,12 @@ export const Post = () => {
   const post = useSelector((state: IState) => state.postsReducer.post);
 
   useEffect(() => {
-    getPostInfo();
+    dispatch(fetchPost(params.postId));
 
     return () => {
       dispatch(clearPost());
     };
   }, []);
-
-  const getPostInfo = async () => {
-    dispatch(fetchPost(params.postId));
-  };
 
   return post.title ? (
     <Container isImage={false}>

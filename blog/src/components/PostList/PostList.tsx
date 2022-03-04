@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { PostCard } from "../Post/PostCard";
 import { Button } from "../Button/Button";
@@ -6,34 +6,66 @@ import { Title } from "../Title/Title";
 import { Container } from "../templates/Container/Container";
 import styles from "./PostList.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "../../redux/store";
-import { addOffset, fetchPosts } from "../../redux/actions/postsActions";
+import { IState, store } from "../../redux/store";
+import {
+  fetchPosts,
+  fetchSearchPosts,
+  fetchMorePosts,
+} from "../../redux/actions/postsActions";
+import { Input } from "../Input/Input";
+import { debounce } from "./helpers";
 
-const LIMIT = 5;
+const debouncedSearch = debounce(
+  (text: string) => store.dispatch(fetchSearchPosts(text)),
+  1000
+);
 
 export const PostList = () => {
+  const [search, setSearch] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
 
   const posts = useSelector((state: IState) => state.postsReducer.posts);
-  const offset = useSelector((state: IState) => state.postsReducer.offset);
+  const count = useSelector((state: IState) => state.postsReducer.count);
 
   useEffect(() => {
-    dispatch(fetchPosts(LIMIT, offset));
-  }, [offset]);
+    dispatch(fetchPosts());
+  }, []);
 
   const loadMore = useCallback(() => {
-    dispatch(addOffset(posts.length));
-  }, [posts]);
+    dispatch(fetchMorePosts());
+  }, []);
+
+  const onChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setSearch(event.target.value);
+      debouncedSearch(search);
+    },
+    [setSearch]
+  );
+
+  const onKeyDown = useCallback(() => {
+    dispatch(fetchSearchPosts(search));
+  }, [search]);
 
   return (
     <Container isImage={false}>
       <div className={styles.allPosts}>
         <div className={styles.title}>
-          <Title text="All posts" />
+          <div className={styles.postsInfo}>
+            <Title text="All posts" />
+            <Button text="+ Add" onClick={() => {}} />
+          </div>
+
+          <Input
+            value={search}
+            label="Search"
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+          />
         </div>
 
-        {posts ? (
+        {posts.length ? (
           <>
             <div className={styles.postList}>
               {posts.map((item) => (
@@ -52,14 +84,14 @@ export const PostList = () => {
             </div>
 
             <div className={styles.loadButton}>
-              {offset + LIMIT > posts.length ? null : (
+              {posts.length !== count ? (
                 <Button
                   text="Load more"
                   onClick={() => {
                     loadMore();
                   }}
                 />
-              )}
+              ) : null}
             </div>
           </>
         ) : (

@@ -1,11 +1,16 @@
 import { Dispatch } from "redux";
 import { ACTIONS } from "../constants";
 import { IPost } from "../reducers/postsReducer";
+import { IState } from "../store";
 
-export const addPosts = (posts: IPost[]) => {
+const LIMIT = 5;
+
+export const addPosts = (posts: IPost[], count: number, offset: number = 0) => {
   return {
     type: ACTIONS.ADD_POSTS,
     posts: posts,
+    count,
+    offset,
   };
 };
 
@@ -22,20 +27,40 @@ export const clearPost = () => {
   };
 };
 
-export const addOffset = (offset: number) => {
-  return {
-    type: ACTIONS.ADD_OFFSET,
-    offset: offset,
+export const fetchPosts = () => {
+  return async (dispatch: Dispatch, getState: () => IState) => {
+    const {
+      postsReducer: { offset },
+    } = getState();
+
+    if (offset === 0) {
+      const response = await fetch(
+        `https://studapi.teachmeskills.by/blog/posts/?limit=${LIMIT}&offset=${0}`
+      );
+      const result = await response.json();
+
+      dispatch(addPosts(result.results, result.count));
+    }
   };
 };
 
-export const fetchPosts = (LIMIT: number, offset: number) => {
-  return async (dispatch: Dispatch) => {
+export const fetchMorePosts = () => {
+  return async (dispatch: Dispatch, getState: () => IState) => {
+    const {
+      postsReducer: { offset, posts },
+    } = getState();
+
     const response = await fetch(
-      `https://studapi.teachmeskills.by/blog/posts/?limit=${LIMIT}&offset=${offset}`
+      `https://studapi.teachmeskills.by/blog/posts/?limit=${LIMIT}&offset=${
+        offset + LIMIT
+      }`
     );
+
     const result = await response.json();
-    dispatch(addPosts(result.results));
+
+    dispatch(
+      addPosts([...posts, ...result.results], result.count, offset + LIMIT)
+    );
   };
 };
 
@@ -46,5 +71,15 @@ export const fetchPost = (id: string) => {
     );
     const result = await response.json();
     dispatch(addPost(result));
+  };
+};
+
+export const fetchSearchPosts = (search: string) => {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(
+      `https://studapi.teachmeskills.by/blog/posts/?limit=100&search=${search}`
+    );
+    const result = await response.json();
+    dispatch(addPosts(result.results, result.count));
   };
 };

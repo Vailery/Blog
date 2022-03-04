@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { ChangeEventHandler, KeyboardEventHandler } from "react";
 import styles from "./Input.module.css";
 
 interface IProps {
-  type: string;
-  label: string;
+  type?: string;
+  label?: string;
+  error?: string;
+  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 }
 
-export const Input = ({ type, label }: IProps) => {
-  const [value, setValue] = useState("");
-
+export const Input = ({
+  type = "text",
+  label,
+  error,
+  onChange,
+  onKeyDown,
+  value,
+}: IProps) => {
   return (
     <label className={styles.label}>
       {" "}
@@ -16,11 +25,11 @@ export const Input = ({ type, label }: IProps) => {
       <input
         type={type}
         value={value}
-        onChange={(event) => {
-          setValue(event.target.value);
-        }}
-        className={styles.input}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        className={`${styles.input} ${error ? styles.error : ""}`}
       />
+      {error ? <p className={styles.errorInfo}>{error}</p> : null}
     </label>
   );
 };

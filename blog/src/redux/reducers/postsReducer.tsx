@@ -9,13 +9,13 @@ export interface IPost {
 }
 
 export interface IPostsState {
-  offset: number;
   posts: IPost[];
   post: IPost;
+  count: number;
+  offset: number;
 }
 
 const defaultState: IPostsState = {
-  offset: 0,
   posts: [],
   post: {
     id: 0,
@@ -24,12 +24,19 @@ const defaultState: IPostsState = {
     date: "",
     title: "",
   },
+  count: 0,
+  offset: 0,
 };
 
 export const postsReducer = (state = defaultState, action: any) => {
   switch (action.type) {
     case ACTIONS.ADD_POSTS: {
-      return { ...state, posts: [...state.posts, ...action.posts] };
+      return {
+        ...state,
+        posts: action.posts,
+        count: action.count,
+        offset: action.offset,
+      };
     }
 
     case ACTIONS.ADD_POST: {
@@ -40,9 +47,6 @@ export const postsReducer = (state = defaultState, action: any) => {
       return { ...state, post: defaultState.post };
     }
 
-    case ACTIONS.ADD_OFFSET: {
-      return { ...state, offset: action.offset };
-    }
     default:
       return state;
   }

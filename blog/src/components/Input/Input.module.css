@@ -16,11 +16,20 @@
   color: #254050;
 }
 
+.error {
+  border-color: red;
+}
+
+.errorInfo {
+  position: absolute;
+}
+
 .input:focus-visible {
   outline: none;
 }
 
 .label {
+  position: relative;
   font-family: "Raleway";
   font-style: normal;
   font-weight: 500;
