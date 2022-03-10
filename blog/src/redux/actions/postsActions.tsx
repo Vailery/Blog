@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { ACTIONS } from "../constants";
 import { IPost } from "../reducers/postsReducer";
 import { IState } from "../store";
-
+// посмотреть файлы
 const LIMIT = 5;
 
 export const addPosts = (posts: IPost[], count: number, offset: number = 0) => {

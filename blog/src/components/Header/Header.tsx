@@ -1,11 +1,16 @@
 import { useContext, useState } from "react";
+import { useSelector } from "react-redux";
 import { Context } from "../../App";
+import { IState } from "../../redux/store";
 import { NavBar } from "../NavBar/NavBar";
 import { Container } from "../templates/Container/Container";
 import styles from "./Header.module.css";
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
+  const { isLoggedIn, username } = useSelector(
+    (state: IState) => state.authReducer
+  );
 
   const closeNavBar = () => {
     setIsActive(false);
@@ -26,6 +31,8 @@ export const Header = () => {
               filter: theme.filter,
             }}
           />
+
+          {isLoggedIn ? <p>{username}</p> : null}
         </div>
       </Container>
       {isActive ? <NavBar closeNavBar={closeNavBar} /> : null}
