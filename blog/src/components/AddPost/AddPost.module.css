@@ -1,0 +1,59 @@
+.addPostWrraper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.addPost {
+  display: flex;
+  width: 100%;
+}
+
+.addText,
+.addImg {
+  width: 100%;
+  padding: 3rem 3rem 6.5rem 3rem;
+}
+
+.addName {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  margin-bottom: 1rem;
+}
+
+.textarea {
+  height: 23rem;
+  width: 32rem;
+  text-align: start;
+  background: #f5f9ff;
+  border: 4px solid #82a9ff;
+  border-radius: 60px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  color: #254050;
+  padding: 1rem;
+  resize: none;
+  outline: none;
+}
+
+.addBtn {
+  display: flex;
+}
+
+.addManeBtn {
+  width: 100%;
+  max-width: 23rem;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  z-index: 1;
+}

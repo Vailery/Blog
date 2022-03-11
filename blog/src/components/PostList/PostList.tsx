@@ -14,6 +14,7 @@ import {
 } from "../../redux/actions/postsActions";
 import { Input } from "../Input/Input";
 import { debounce } from "./helpers";
+import { Slider } from "../Slider/Slider";
 
 const debouncedSearch = debounce(
   (text: string) => store.dispatch(fetchSearchPosts(text)),
@@ -49,57 +50,65 @@ export const PostList = () => {
   }, [search]);
 
   return (
-    <Container isImage={false}>
-      <div className={styles.allPosts}>
-        <div className={styles.title}>
-          <div className={styles.postsInfo}>
-            <Title text="All posts" />
-            <Button text="+ Add" onClick={() => {}} />
+    <>
+      {/* <Slider /> */}
+      <Container isImage={false}>
+        <div className={styles.allPosts}>
+          <div className={styles.title}>
+            <div className={styles.postsInfo}>
+              <Title text="All posts" />
+              <Button
+                text="+ Add"
+                onClick={() => {
+                  history.push("/addpost");
+                }}
+              />
+            </div>
+
+            <Input
+              value={search}
+              label="Search"
+              onChange={onChange}
+              onKeyDown={onKeyDown}
+            />
           </div>
 
-          <Input
-            value={search}
-            label="Search"
-            onChange={onChange}
-            onKeyDown={onKeyDown}
-          />
+          {posts.length ? (
+            <>
+              <div className={styles.postList}>
+                {posts.map((item) => (
+                  <PostCard
+                    key={item.id + Math.random().toString(16).slice(2)}
+                    image={item.image}
+                    title={item.title}
+                    text={item.text}
+                    date={item.date}
+                    id={item.id}
+                    onClick={() => {
+                      history.push("/post/" + item.id);
+                    }}
+                  />
+                ))}
+              </div>
+
+              <div className={styles.loadButton}>
+                {posts.length !== count ? (
+                  <Button
+                    text="Load more"
+                    onClick={() => {
+                      loadMore();
+                    }}
+                  />
+                ) : null}
+              </div>
+            </>
+          ) : (
+            <div className={styles.noPostsTitle}>
+              <Title text="NO posts..." />
+            </div>
+          )}
         </div>
-
-        {posts.length ? (
-          <>
-            <div className={styles.postList}>
-              {posts.map((item) => (
-                <PostCard
-                  key={item.id + Math.random().toString(16).slice(2)}
-                  image={item.image}
-                  title={item.title}
-                  text={item.text}
-                  date={item.date}
-                  id={item.id}
-                  onClick={() => {
-                    history.push("/post/" + item.id);
-                  }}
-                />
-              ))}
-            </div>
-
-            <div className={styles.loadButton}>
-              {posts.length !== count ? (
-                <Button
-                  text="Load more"
-                  onClick={() => {
-                    loadMore();
-                  }}
-                />
-              ) : null}
-            </div>
-          </>
-        ) : (
-          <div className={styles.noPostsTitle}>
-            <Title text="NO posts..." />
-          </div>
-        )}
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 };

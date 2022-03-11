@@ -1,9 +1,8 @@
 import { Dispatch } from "redux";
+import { getPosts, LIMIT } from "../../services/posts";
 import { ACTIONS } from "../constants";
 import { IPost } from "../reducers/postsReducer";
 import { IState } from "../store";
-// посмотреть файлы
-const LIMIT = 5;
 
 export const addPosts = (posts: IPost[], count: number, offset: number = 0) => {
   return {
@@ -34,10 +33,7 @@ export const fetchPosts = () => {
     } = getState();
 
     if (offset === 0) {
-      const response = await fetch(
-        `https://studapi.teachmeskills.by/blog/posts/?limit=${LIMIT}&offset=${0}`
-      );
-      const result = await response.json();
+      const result = await getPosts(0);
 
       dispatch(addPosts(result.results, result.count));
     }
@@ -50,13 +46,7 @@ export const fetchMorePosts = () => {
       postsReducer: { offset, posts },
     } = getState();
 
-    const response = await fetch(
-      `https://studapi.teachmeskills.by/blog/posts/?limit=${LIMIT}&offset=${
-        offset + LIMIT
-      }`
-    );
-
-    const result = await response.json();
+    const result = await getPosts(offset + 5);
 
     dispatch(
       addPosts([...posts, ...result.results], result.count, offset + LIMIT)

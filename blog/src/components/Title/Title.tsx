@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Context } from "../../App";
+import { ThemeContext } from "../../context/ThemeContext";
 import styles from "./Title.module.css";
 
 interface IProps {
@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export const Title = ({ text }: IProps) => {
-  const { theme } = useContext(Context);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <p

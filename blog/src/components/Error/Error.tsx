@@ -1,11 +1,27 @@
 import { useHistory } from "react-router-dom";
+import lottie from "lottie-web";
 import { Title } from "../Title/Title";
 import { Button } from "../Button/Button";
 import { Container } from "../templates/Container/Container";
 import styles from "./Error.module.css";
+import { useEffect, useRef } from "react";
 
 export const Error = () => {
   const history = useHistory();
+
+  const container = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (container.current) {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        animationData: require("./astronaout.json"),
+      });
+    }
+  }, [container]);
 
   return (
     <Container isImage={true}>
@@ -22,7 +38,7 @@ export const Error = () => {
         />
       </div>
 
-      <img src="/assets/img/astronaut.png" alt="error" />
+      <div ref={container} className={styles.image} />
     </Container>
   );
 };

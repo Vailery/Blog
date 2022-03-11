@@ -7,7 +7,7 @@ import styles from "./Login.module.css";
 import { useCallback, useEffect, useState } from "react";
 import { validationService } from "../../services/validation";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/actions/authActions";
+import { init, login } from "../../redux/actions/authActions";
 import { IState } from "../../redux/store";
 
 export const Login = () => {

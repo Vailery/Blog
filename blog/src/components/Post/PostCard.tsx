@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Context } from "../../App";
+import { ThemeContext } from "../../context/ThemeContext";
 import { Image } from "../Image/Image";
 import styles from "./PostCard.module.css";
 
@@ -20,7 +20,7 @@ export const PostCard = ({
   date,
   onClick,
 }: IPostCard) => {
-  const { theme } = useContext(Context);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div

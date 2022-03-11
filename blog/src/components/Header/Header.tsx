@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 import { useSelector } from "react-redux";
-import { Context } from "../../App";
 import { IState } from "../../redux/store";
 import { NavBar } from "../NavBar/NavBar";
 import { Container } from "../templates/Container/Container";
@@ -16,7 +16,7 @@ export const Header = () => {
     setIsActive(false);
   };
 
-  const { theme } = useContext(Context);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <nav className={styles.header}>
