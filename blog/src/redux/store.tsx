@@ -1,14 +1,16 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+
 import { IPostsState, postsReducer } from "./reducers/postsReducer";
-import { IPostState, postReducer } from "./reducers/postReducer";
+import { IAuthState, authReducer } from "./reducers/authReducer";
 
 export interface IState {
   postsReducer: IPostsState;
-  postReducer: IPostState;
+  authReducer: IAuthState;
 }
 
 export const store = createStore(
-  combineReducers({ postsReducer, postReducer }),
-  composeWithDevTools()
+  combineReducers({ postsReducer, authReducer }),
+  composeWithDevTools(applyMiddleware(thunk))
 );

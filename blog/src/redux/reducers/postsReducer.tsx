@@ -10,16 +10,41 @@ export interface IPost {
 
 export interface IPostsState {
   posts: IPost[];
+  post: IPost;
+  count: number;
+  offset: number;
 }
 
 const defaultState: IPostsState = {
   posts: [],
+  post: {
+    id: 0,
+    image: "",
+    text: "",
+    date: "",
+    title: "",
+  },
+  count: 0,
+  offset: 0,
 };
 
 export const postsReducer = (state = defaultState, action: any) => {
   switch (action.type) {
     case ACTIONS.ADD_POSTS: {
-      return { ...state, posts: action.posts };
+      return {
+        ...state,
+        posts: action.posts,
+        count: action.count,
+        offset: action.offset,
+      };
+    }
+
+    case ACTIONS.ADD_POST: {
+      return { ...state, post: action.post };
+    }
+
+    case ACTIONS.CLEAR_POST: {
+      return { ...state, post: defaultState.post };
     }
 
     default:

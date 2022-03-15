@@ -1,6 +1,7 @@
 .allPosts {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .postList {
@@ -11,6 +12,9 @@
 
 .title {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 155px;
 }
 
 .loadButton {
@@ -18,5 +22,39 @@
 }
 
 .noPostsTitle {
-  margin: 30vh 0 0 30rem;
+  margin: 30vh 0 40vh 30rem;
+}
+
+.postsInfo {
+  display: flex;
+  align-items: center;
+}
+
+.postsInfo button {
+  width: 110px;
+  height: 51px;
+  margin-bottom: 41px;
+  margin-left: 45px;
+}
+
+.title label {
+  color: #016efc;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 145.2%;
+  letter-spacing: 0.03em;
+}
+
+.title input {
+  display: inline-block;
+  width: 260px;
+  height: 44px;
+  border: 4px solid #016efc;
+  border-radius: 200px;
+  margin-left: 18px;
+  padding: 9px 24px 12px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+  color: #4f4f4f;
 }

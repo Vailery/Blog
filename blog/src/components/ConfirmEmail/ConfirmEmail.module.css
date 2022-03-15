@@ -1,8 +1,8 @@
-.registration {
-  margin-top: 72px;
+.login {
+  margin-top: 22px;
 }
 
-.registration p {
+.login p {
   margin: 0;
 }
 
@@ -11,17 +11,17 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-bottom: 35px;
+  margin-bottom: 100px;
 }
 
-.title a:last-of-type {
+.title a:first-of-type {
   color: #016efc;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  padding: 53px 0 59px;
+  padding: 100px 0 70px;
 }
 
 .info {
@@ -45,10 +45,4 @@
   position: absolute;
   right: 0;
   z-index: -1;
-}
-
-.error {
-  color: red;
-  font-size: 24px;
-  font-weight: bold;
 }

@@ -1,56 +1,23 @@
-import { createContext, useState } from "react";
+import { useContext } from "react";
 import { RootRouter } from "./navigation/RootRouter";
 import "./App.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-
-export const darkTheme = {
-  text: "#FFFFFF",
-  grayText: "#FFFFFF",
-  timeText: "#FFFFFF",
-  colorOfCard: "#016EFC",
-  backgroundColor: "#0060DC",
-  filter: "brightness(0) invert(1)",
-};
-
-export const lightTheme = {
-  text: "#4F4F4F",
-  grayText: "#979797",
-  timeText: "#016EFC",
-  colorOfCard: "#FFFFFF",
-  backgroundColor: "#F8FAFE",
-  filter: "none",
-};
-
-export const Context = createContext({
-  isDark: false,
-  changeIsDark: () => {},
-  theme: lightTheme,
-});
+import { ThemeContext } from "./context/ThemeContext";
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-
-  const changeIsDark = () => {
-    setIsDark((isDark) => !isDark);
-  };
+  const { theme } = useContext(ThemeContext);
 
   return (
     <Provider store={store}>
-      <Context.Provider
-        value={{ isDark, changeIsDark, theme: isDark ? darkTheme : lightTheme }}
+      <div
+        className="App"
+        style={{
+          background: theme.backgroundColor,
+        }}
       >
-        <div
-          className="App"
-          style={{
-            background: isDark
-              ? darkTheme.backgroundColor
-              : lightTheme.backgroundColor,
-          }}
-        >
-          <RootRouter />
-        </div>
-      </Context.Provider>
+        <RootRouter />
+      </div>
     </Provider>
   );
 }

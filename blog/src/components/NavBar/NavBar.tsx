@@ -1,16 +1,21 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { Context } from "../../App";
+import { ThemeContext } from "../../context/ThemeContext";
 import { Container } from "../templates/Container/Container";
 import { DarkModeToggle } from "../DarkModeToggle/DarkModeToggle";
 import styles from "./NavBar.module.css";
+import { useSelector } from "react-redux";
+import { IState } from "../../redux/store";
 
 interface IProps {
   closeNavBar: () => void;
 }
 
 export const NavBar = ({ closeNavBar }: IProps) => {
-  const { isDark, changeIsDark } = useContext(Context);
+  const { isDark, changeIsDark } = useContext(ThemeContext);
+  const { isLoggedIn, username } = useSelector(
+    (state: IState) => state.authReducer
+  );
 
   return (
     <div className={styles.navBar}>
@@ -23,6 +28,7 @@ export const NavBar = ({ closeNavBar }: IProps) => {
               className={styles.closeButton}
               onClick={closeNavBar}
             />
+            {isLoggedIn ? <p>{username}</p> : null}
 
             <ul>
               <li>
@@ -59,7 +65,7 @@ export const NavBar = ({ closeNavBar }: IProps) => {
           </div>
 
           <DarkModeToggle
-            inputChecked={isDark ? true : false}
+            inputChecked={isDark}
             onChange={() => {
               changeIsDark();
             }}

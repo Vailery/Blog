@@ -1,0 +1,23 @@
+.container {
+  width: 250px;
+  position: relative;
+  height: 200px;
+  background: red;
+  overflow: hidden;
+}
+
+.inner-container {
+  position: absolute;
+  display: flex;
+  height: 100px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.card {
+  width: 120px;
+  height: 200px;
+  background: black;
+  margin-right: 10px;
+  color: white;
+}
