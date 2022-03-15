@@ -1,18 +1,25 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, KeyboardEventHandler } from "react";
 import styles from "./TextArea.module.css";
 
 interface IProps {
-  label?: string;
   value: string;
-  onChange: (e: any) => void;
+  onChange: ChangeEventHandler<HTMLTextAreaElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
+  label?: string;
+  error?: string;
 }
 
-export const TextArea = ({ label, onChange, value }: IProps) => {
+export const TextArea = ({ label, value, error, onChange }: IProps) => {
   return (
     <label className={styles.label}>
       {" "}
-      {label}
-      <textarea value={value} onChange={onChange} />
+      {label ? <p>{label}</p> : null}
+      <textarea
+        value={value}
+        onChange={onChange}
+        className={`${styles.input} ${error ? styles.error : ""}`}
+      />
+      {error ? <p>{error}</p> : null}
     </label>
   );
 };

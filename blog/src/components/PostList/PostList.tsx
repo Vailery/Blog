@@ -51,7 +51,6 @@ export const PostList = () => {
 
   return (
     <>
-      {/* <Slider /> */}
       <Container isImage={false}>
         <div className={styles.allPosts}>
           <div className={styles.title}>

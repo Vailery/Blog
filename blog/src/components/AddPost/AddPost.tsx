@@ -13,15 +13,13 @@ import { TextArea } from "../TextArea/TextArea";
 export const AddPost = () => {
   const { theme } = useContext(ThemeContext);
 
-  const [title, setTitle] = useState("");
-  const [number, setNumber] = useState("");
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [number, setNumber] = useState<string>("");
+  const [text, setText] = useState<string>("");
   const [image, setImage] = useState("");
 
-  //////// look
   const onLoad = (event: any) => {
     setImage(event.target.files[0]);
-    console.log(image);
   };
 
   return (
